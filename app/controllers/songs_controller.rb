@@ -32,10 +32,9 @@ class SongsController < ApplicationController
       @song = Song.find_by_slug(params[:slug])
       @genres = Genre.all
       erb :'/songs/edit'
-
     end
 
-    post '/songs/:slug' do
+    patch '/songs/:slug' do
 
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
