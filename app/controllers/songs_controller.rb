@@ -39,6 +39,7 @@ class SongsController < ApplicationController
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.update(:name => params[:name], :artist_id => @artist.id)
+        binding.pry
        @song.genres.destroy
       #  @song.genres << Genre.find_by(id: params["Genre Name"])
         redirect to "/songs/#{@song.slug}"
