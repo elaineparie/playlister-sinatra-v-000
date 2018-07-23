@@ -33,9 +33,8 @@ enable :sessions
     end
 
     patch '/songs/:slug' do
-
-      if !!Artist.find_by(name: params["Artist Name"])
-        @artist = Artist.find_by(name: params["Artist Name"])
+      @artist = Artist.find_by(name: params["Artist Name"])
+      if @artist
         @song = Song.find_by_slug(params[:slug])
         @song.genres.clear
         @song.update(:name => params[:name], :artist_id => @artist.id)
