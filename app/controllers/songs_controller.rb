@@ -21,6 +21,7 @@ enable :sessions
       artist_id = @artist.id
       @song = Song.create(:name => params["Name"],:artist_id => artist_id)
       @song.genres << Genre.find_by(id: params["Genre Name"])
+      @song.save
       redirect to "/songs/#{@song.slug}"
     end
     @song.save
