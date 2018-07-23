@@ -35,6 +35,7 @@ enable :sessions
     patch '/songs/:slug' do
         @song = Song.find_by_slug(params[:slug])
         @song.update(params[:song])
+        @song.artist = Artist.find_or_create_by(params["Artist Name"])
         @song.genres << Genre.find_by(id: params["Genre Name"])
         @song.save
         redirect to "/songs/#{@song.slug}"
