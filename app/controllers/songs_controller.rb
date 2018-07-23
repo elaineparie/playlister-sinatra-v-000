@@ -36,8 +36,6 @@ class SongsController < ApplicationController
 
     patch '/songs/:slug' do
 
-      puts "Successfully Updated Song"
-
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.update(:name => params[:name], :artist_id => @artist.id)
@@ -48,6 +46,7 @@ class SongsController < ApplicationController
         artist_id = @artist.id
         @song = Song.update(:name => params["Name"],:artist_id => artist_id)
         @song.genres << Genre.find_by(id: params["Genre Name"])
+        puts "Successfully Updated Song"
         redirect to "/songs/#{@song.slug}"
       end
 
