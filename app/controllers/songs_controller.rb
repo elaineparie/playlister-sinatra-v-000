@@ -52,7 +52,6 @@ enable :sessions
         @song.find_by_slug(params[:slug])
         @song.update(:name => params["Name"],:artist_id => artist_id)
         @song.genres << Genre.find_by(id: params["Genre Name"])
-        binding.pry
         @song.save
         redirect to "/songs/#{@song.slug}"
       end
