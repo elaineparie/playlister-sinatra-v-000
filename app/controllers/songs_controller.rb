@@ -54,8 +54,6 @@ enable :sessions
         @song.save
         redirect to "/songs/#{@song.slug}"
       end
-
-
      erb :'/songs/show'
     end
 
