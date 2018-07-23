@@ -38,7 +38,7 @@ enable :sessions
     end
 
     patch '/songs/:slug' do
-      binding.pry
+  
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.find_by_slug(params[:slug])
