@@ -39,7 +39,6 @@ enable :sessions
         @song.genres << Genre.find_by(id: params["Genre Name"])
         @song.save
         redirect to "/songs/#{@song.slug}"
-      end
      erb :'/songs/show'
     end
 
