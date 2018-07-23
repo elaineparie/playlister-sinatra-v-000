@@ -21,8 +21,6 @@ enable :sessions
       artist_id = @artist.id
       @song = Song.create(:name => params["Name"],:artist_id => artist_id)
       @song.genres << Genre.find_by(id: params["Genre Name"])
-      #@song.genres = @genre
-    #  SongGenre.create(:song_id => @song.id, :genre_id => @genre.id)
       redirect to "/songs/#{@song.slug}"
     end
     @song.save
@@ -35,7 +33,7 @@ enable :sessions
     end
 
     patch '/songs/:slug' do
-  
+
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.find_by_slug(params[:slug])
