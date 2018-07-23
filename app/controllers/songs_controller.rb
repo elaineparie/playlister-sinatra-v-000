@@ -37,6 +37,7 @@ enable :sessions
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.find_by_slug(params[:slug])
+        @song.genres.clear
         @song.update(:name => params[:name], :artist_id => @artist.id)
         @song.genres << Genre.find_by(id: params["Genre Name"])
         @song.save
