@@ -1,5 +1,6 @@
+require 'rack-flash'
 class SongsController < ApplicationController
-  enable :sessions
+enable :sessions
   use Rack::Flash
 
   get '/songs/new' do
