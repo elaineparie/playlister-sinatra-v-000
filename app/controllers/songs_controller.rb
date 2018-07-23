@@ -1,5 +1,4 @@
 class SongsController < ApplicationController
-  use Rack::Flash
 
   get '/songs/new' do
     @songs = Song.all
