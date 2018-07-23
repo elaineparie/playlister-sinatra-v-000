@@ -36,10 +36,11 @@ class SongsController < ApplicationController
     end
 
     post '/songs/:slug' do
+      binding.pry
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.update(:name => params[:name], :artist_id => @artist.id)
-       @song.genres.destroy 
+       @song.genres.destroy
       #  @song.genres << Genre.find_by(id: params["Genre Name"])
         redirect to "/songs/#{@song.slug}"
       else
