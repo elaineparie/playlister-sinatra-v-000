@@ -46,6 +46,7 @@ class SongsController < ApplicationController
         @artist = Artist.create(:name => params["Artist Name"])
         artist_id = @artist.id
         @song = Song.update(:name => params["Name"],:artist_id => artist_id)
+        binding.pry
         @song.genres << Genre.find_by(id: params["Genre Name"])
         redirect to "/songs/#{@song.slug}"
       end
