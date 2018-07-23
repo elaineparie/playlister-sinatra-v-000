@@ -36,7 +36,7 @@ class SongsController < ApplicationController
 
     patch '/songs/:slug' do
 
-      "Successfully Updated Song"
+      puts "Successfully Updated Song"
 
       if !!Artist.find_by(name: params["Artist Name"])
         @artist = Artist.find_by(name: params["Artist Name"])
