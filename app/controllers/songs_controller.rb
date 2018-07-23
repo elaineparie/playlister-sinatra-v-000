@@ -24,7 +24,6 @@ enable :sessions
       @song.save
       redirect to "/songs/#{@song.slug}"
     end
-    @song.save
   end
 
   get '/songs/:slug/edit' do
