@@ -48,6 +48,7 @@ class SongsController < ApplicationController
         @song.genres << Genre.find_by(id: params["Genre Name"])
         redirect to "/songs/#{@song.slug}"
       end
+      @song.update
       @song.save
 
      erb :'/songs/show'
