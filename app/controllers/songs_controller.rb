@@ -43,16 +43,17 @@ enable :sessions
         @artist = Artist.find_by(name: params["Artist Name"])
         @song = Song.update(:name => params[:name], :artist_id => @artist.id)
         @song.genres << Genre.find_by(id: params["Genre Name"])
+        @song.save
         redirect to "/songs/#{@song.slug}"
       else
         @artist = Artist.create(:name => params["Artist Name"])
         artist_id = @artist.id
         @song = Song.update(:name => params["Name"],:artist_id => artist_id)
         @song.genres << Genre.find_by(id: params["Genre Name"])
+        @song.save
         redirect to "/songs/#{@song.slug}"
       end
 
-      @song.save
 
      erb :'/songs/show'
     end
